@@ -1,0 +1,29 @@
+Xampp
+CREATE DATABASE tienda_accesorios;
+USE tienda_accesorios;
+
+-- Estructura de usuarios con email y clave hasheada
+CREATE TABLE usuarios (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  usuario VARCHAR(50) NOT NULL UNIQUE,
+  email VARCHAR(100) NOT NULL UNIQUE,
+  clave VARCHAR(255) NOT NULL
+);
+
+-- Inserta el usuario de prueba con la clave hasheada (MD5 de '1234')
+INSERT INTO usuarios (usuario, email, clave) VALUES
+('admin', 'admin@tienda.com', MD5('1234'));
+
+-- Estructura de productos (ya está bien)
+CREATE TABLE productos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    precio DECIMAL(10,2) NOT NULL,
+    stock INT NOT NULL
+);
+
+INSERT INTO productos (nombre, precio, stock) VALUES
+('Collar de cuero', 12.50, 15),
+('Pulsera de plata', 20.00, 8),
+('Reloj deportivo', 35.75, 5),
+('Gorra clásica', 10.00, 12);
